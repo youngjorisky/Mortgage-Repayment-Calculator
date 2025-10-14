@@ -1,309 +1,308 @@
+/* ===== Base Styles ===== */
 html {
-    box-sizing: border-box;
-    font-family: "Plus Jakarta Sans", sans-serif;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
-    margin: 0;
-    color: hsl(202, 55%, 16%, 55%);
-    background-color: hsl(202, 86%, 94%);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: hsl(202, 55%, 16%, 55%);
+  background-color: hsl(202, 86%, 94%);
 }
 
 .attribution {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
+/* ===== Layout ===== */
 .whole {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    border: 1px solid transparent;
-    background-color: fff;
-    /* optional: hide border for clean mobile view */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid transparent;
 }
 
 .calculator,
 .results {
-    width: 100%;
+  width: 100%;
 }
 
+/* ===== Calculator Section ===== */
 .calculator {
-    width: 100%;
-    margin: 0 auto;
-    background: #fff;
-    padding: 24px;
-}
-
-.results {
-    width: 100%;
-    border: 1px solid black;
-    padding: 24px;
-    color: hsl(0, 0%, 80%);
-    background-color: hsl(202, 55%, 16%);
-}
-
-.results h2 {
-    margin-top: 0px;
+  background: #fff;
+  padding: 24px;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    margin-bottom: 20px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .header h2 {
-    font-size: 1.4rem;
-    margin: 0;
-    color: hsl(202, 55%, 16%);
+  margin: 0;
+  font-size: 1.4rem;
+  color: hsl(202, 55%, 16%);
 }
 
 #reset {
-    background: none;
-    border: none;
-    color: #777;
-    cursor: pointer;
-    font-size: 1rem;
-    text-decoration: underline;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: underline;
 }
 
+/* ===== Inputs ===== */
 label {
-    display: block;
-    font-weight: 600;
-    margin-top: 15px;
-}
-
-.input-group input {
-    margin-top: 10px;
+  display: block;
+  font-weight: 600;
+  margin-top: 15px;
 }
 
 .input-group {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
 }
 
 .input-group input {
-    width: 100%;
-    padding: 12px 60px;
-    border: 1px solid hsl(200, 24%, 40%);
-    border-radius: 6px;
-    font-size: 16px;
-    outline: none;
+  width: 100%;
+  padding: 12px 60px;
+  border: 1px solid hsl(200, 24%, 40%);
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  font-weight: 900;
+  color: hsl(202, 55%, 16%);
+  font-family: inherit;
 }
 
 .input-group input:focus {
-    border-color: #5a8dee;
+  border-color: #5a8dee;
 }
 
 .symbol {
-    position: absolute;
-    color: hsl(200, 24%, 40%);
-    font-weight: 700;
-    background-color: hsl(202, 86%, 94%);
-    padding: 11px 18px;
-    margin-top: 10px;
-    left: 1px;
-    border-radius: 5px 0px 0px 5px;
+  position: absolute;
+  left: 1px;
+  padding: 11px 18px;
+  color: hsl(200, 24%, 40%);
+  font-weight: 700;
+  background-color: hsl(202, 86%, 94%);
+  border-radius: 5px 0 0 5px;
+}
+
+.symbol.right {
+  left: auto;
+  right: 1px;
+  border-radius: 0 5px 5px 0;
 }
 
 #rate,
 #years {
-    padding-left: 15px;
-}
-
-.symbol.right {
-    right: 1px;
-    left: auto;
-    margin-top: 10px;
-    border-radius: 0px 5px 5px 0px;
-    color: hsl(200, 24%, 40%);
+  padding-left: 15px;
 }
 
 /* ===== Custom Radio Buttons ===== */
 .radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-/* Each label acts as a clickable box */
 .radio-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border: 1px solid hsl(200, 24%, 40%);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background-color: white;
-    color: hsl(202, 55%, 16%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid hsl(200, 24%, 40%);
+  border-radius: 6px;
+  background-color: #fff;
+  color: hsl(202, 55%, 16%);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Hover effect */
 .radio-option:hover {
-    border-color: hsl(61, 70%, 52%);
-    background-color: hsl(61, 70%, 96%);
+  border-color: hsl(61, 70%, 52%);
+  background-color: hsl(61, 70%, 96%);
 }
 
-/* Hide default radio */
 .radio-option input[type="radio"] {
-    display: none;
+  display: none;
 }
 
-/* Create custom circular radio (outer ring) */
 .custom-radio {
-    width: 20px;
-    height: 20px;
-    border: 2px solid hsl(61, 70%, 70%);
-    /* light yellow border ring */
-    border-radius: 50%;
-    background-color: hsl(60, 80%, 97%);
-    /* faint cream background */
-    position: relative;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
+  width: 20px;
+  height: 20px;
+  border: 2px solid hsl(61, 70%, 70%);
+  border-radius: 50%;
+  background-color: hsl(60, 80%, 97%);
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
-/* Inner circle when selected */
-.radio-option input[type="radio"]:checked+.custom-radio::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    background-color: hsl(61, 70%, 52%);
-    /* lime green inner dot */
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.radio-option input[type="radio"]:checked + .custom-radio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: hsl(61, 70%, 52%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* Change border + background when selected */
-.radio-option input[type="radio"]:checked+.custom-radio {
-    border-color: hsl(61, 70%, 52%);
-    background-color: hsl(61, 70%, 95%);
-}
-
-/* Also highlight the label box when selected */
-.radio-option input[type="radio"]:checked~span,
-.radio-option input[type="radio"]:checked~*:not(.custom-radio) {
-    color: hsl(200, 24%, 20%);
-}
-
+.radio-option input[type="radio"]:checked + .custom-radio,
 .radio-option:has(input[type="radio"]:checked) {
-    background-color: hsl(61, 70%, 95%);
-    border-color: hsl(61, 70%, 52%);
+  border-color: hsl(61, 70%, 52%);
+  background-color: hsl(61, 70%, 95%);
 }
 
-
+/* ===== Submit Button ===== */
 .submit-btn {
-    width: 100%;
-    height: 50px;
-    padding: 14px;
-    background-color: #c4f000;
-    border: none;
-    border-radius: 40px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 16px;
+  width: 100%;
+  height: 50px;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  background-color: #c4f000;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .submit-btn:hover {
-    background-color: hsl(73, 100%, 44%);
+  background-color: hsl(73, 100%, 44%);
+}
+
+/* ===== Results Section ===== */
+.results {
+  border: 1px solid black;
+  padding: 24px;
+  background-color: hsl(202, 55%, 16%);
+  color: hsl(0, 0%, 80%);
+}
+
+.results h2 {
+  margin-top: 0;
 }
 
 .output {
-    padding: 10px;
-    border-radius: 5px;
-    background-color: hsl(202, 55%, 12%);
-    border-top: 4px solid hsl(73, 100%, 44%);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: hsl(202, 55%, 12%);
+  border-top: 4px solid hsl(73, 100%, 44%);
 }
 
 .line {
-    border: 0.5px solid hsl(0, 0%, 50%);
-    width: 100%;
-    margin-top: 15px;
+  border: 0.5px solid hsl(0, 0%, 50%);
+  width: 100%;
+  margin-top: 15px;
 }
 
 .monthly-repayments span {
-    font-size: 2.5rem;
-    color: hsl(73, 100%, 44%);
-    font-weight: 900;
+  font-size: 2.5rem;
+  color: hsl(73, 100%, 44%);
+  font-weight: 900;
 }
 
 .total-repayments span {
-    font-size: 1.5rem;
-    font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 900;
 }
 
-/* === Desktop View === */
+/* ===== Desktop View ===== */
 @media (min-width: 768px) {
 
-    .whole {
-        flex-direction: row;
-        max-width: 900px;
-        background-color: #fff;
-        /* slightly wider for side-by-side layout */
-    }
+  body {
+    height: 100vh;
+  }
 
-    .calculator {
-        border-radius: 10px 0 0 10px;
-    }
+  .whole {
+    flex-direction: row;
+    max-width: 900px;
+    border-radius: 20px;
+  }
 
-    form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
+  .calculator {
+    border-radius: 10px 0 0 10px;
+    padding: 30px;
+  }
 
-    form label,
-    form .input-group,
-    .radio-group,
-    .submit-btn {
-        grid-column: span 2;
-        margin: 0px;
-    }
+  .calculator .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    .submit-btn {
-        justify-self: center;
-        width: 100%;
-    }
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 
-    .results {
-        border-radius: 0 20px 20px 100px;
-    }
+  form label,
+  form .input-group,
+  .radio-group,
+  .submit-btn,
+  form .term-and-rate {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
 
-    .calculator .header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
+  .term-and-rate {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+  .seperated {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .seperated .input-group,
+  .seperated .input-group input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .submit-btn {
+    margin-top: 25px;
+    justify-self: start;
+    width: 75%;
+  }
+
+  .results {
+    border-radius: 0 20px 20px 100px;
+  }
 }
