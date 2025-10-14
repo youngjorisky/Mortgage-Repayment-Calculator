@@ -11,7 +11,8 @@ html {
 
 body {
     margin: 0;
-    background-color: #f7f8fa;
+    color: hsl(202, 55%, 16%, 55%);
+    background-color: hsl(202, 86%, 94%);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -19,15 +20,25 @@ body {
     align-items: center;
 }
 
+.attribution {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .whole {
     display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 400px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-    border: 1px solid black;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    background-color: fff;
+    /* optional: hide border for clean mobile view */
+}
+
+.calculator,
+.results {
+    width: 100%;
 }
 
 .calculator {
@@ -35,13 +46,14 @@ body {
     margin: 0 auto;
     background: #fff;
     padding: 24px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .results {
     width: 100%;
     border: 1px solid black;
     padding: 24px;
+    color: hsl(0, 0%, 80%);
+    background-color: hsl(202, 55%, 16%);
 }
 
 .results h2 {
@@ -59,6 +71,7 @@ body {
 .header h2 {
     font-size: 1.4rem;
     margin: 0;
+    color: hsl(202, 55%, 16%);
 }
 
 #reset {
@@ -89,7 +102,7 @@ label {
 
 .input-group input {
     width: 100%;
-    padding: 12px 45px;
+    padding: 12px 60px;
     border: 1px solid hsl(200, 24%, 40%);
     border-radius: 6px;
     font-size: 16px;
@@ -105,10 +118,15 @@ label {
     color: hsl(200, 24%, 40%);
     font-weight: 700;
     background-color: hsl(202, 86%, 94%);
-    padding: 12.5px 18px;
+    padding: 11px 18px;
     margin-top: 10px;
     left: 1px;
     border-radius: 5px 0px 0px 5px;
+}
+
+#rate,
+#years {
+    padding-left: 15px;
 }
 
 .symbol.right {
@@ -138,6 +156,7 @@ label {
     cursor: pointer;
     transition: all 0.2s ease;
     background-color: white;
+    color: hsl(202, 55%, 16%);
 }
 
 /* Hover effect */
@@ -217,29 +236,45 @@ label {
 }
 
 .submit-btn:hover {
-    background-color: #b0e000;
+    background-color: hsl(73, 100%, 44%);
 }
 
 .output {
-    border: 1px solid black;
     padding: 10px;
     border-radius: 5px;
+    background-color: hsl(202, 55%, 12%);
+    border-top: 4px solid hsl(73, 100%, 44%);
 }
+
 .line {
-    border: 1px solid black;
+    border: 0.5px solid hsl(0, 0%, 50%);
     width: 100%;
+    margin-top: 15px;
 }
-.monthly-repayments span{
+
+.monthly-repayments span {
     font-size: 2.5rem;
+    color: hsl(73, 100%, 44%);
+    font-weight: 900;
 }
-.total-repayments span{
+
+.total-repayments span {
     font-size: 1.5rem;
+    font-weight: 900;
 }
 
 /* === Desktop View === */
 @media (min-width: 768px) {
+
+    .whole {
+        flex-direction: row;
+        max-width: 900px;
+        background-color: #fff;
+        /* slightly wider for side-by-side layout */
+    }
+
     .calculator {
-        max-width: 600px;
+        border-radius: 10px 0 0 10px;
     }
 
     form {
@@ -253,15 +288,22 @@ label {
     .radio-group,
     .submit-btn {
         grid-column: span 2;
+        margin: 0px;
     }
 
     .submit-btn {
-        grid-column: span 2;
         justify-self: center;
-        width: 50%;
+        width: 100%;
     }
 
-    #results {
-        grid-column: span 2;
+    .results {
+        border-radius: 0 20px 20px 100px;
+    }
+
+    .calculator .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 }
