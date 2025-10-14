@@ -30,6 +30,7 @@
             <span class="symbol">£</span>
             <input id="amount" required />
           </div>
+          <p id="error-message" class="error-message"></p>
 
           <!-- Mortgage Term -->
           <div class="term-and-rate">
@@ -39,6 +40,7 @@
                 <input id="years" required />
                 <span class="symbol right">years</span>
               </div>
+              <p id="error-message" class="error-message"></p>
             </div>
 
             <!-- Interest Rate -->
@@ -48,6 +50,7 @@
                 <input step="0.01" id="rate" required />
                 <span class="symbol right">%</span>
               </div>
+              <p id="error-message" class="error-message"></p>
             </div>
           </div>
 
@@ -66,6 +69,7 @@
               <span class="custom-radio"></span>
               Interest Only
             </label>
+            <p id="error-message" class="error-message"></p>
           </div>
 
 
@@ -80,7 +84,8 @@
       <!-- SECOND SECTION -->
       <section class="results" id="results">
 
-        <h2>Your results</h2>
+        <div class="display-after">
+           <h2>Your results</h2>
         <p>Your results are shown below based on the information you provided. To aadjust the results, edit the form and
           click "calculate repayments" again.</p>
         <div class="output" id="output">
@@ -96,6 +101,14 @@
             <span id="total repayments">£1,791.74</span>
           </div>
         </div>
+        </div>
+
+        <div class="display-before">
+          <img src="./assets/images/illustration-empty.svg">
+          <h2>Results shown here</h2>
+          <p>Complete the form and click "calculate repayments" to see what your monthly repayments would be.</p>
+        </div>
+
       </section>
     </div>
 
