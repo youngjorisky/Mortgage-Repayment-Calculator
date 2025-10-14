@@ -347,10 +347,11 @@ label {
 
     .results {
         border-radius: 0 20px 20px 80px;
-        justify-content: start;
+        justify-content: center;
     }
     .results > p {
         font-size: 14px;
+
     }
     .output {
         padding: 30px;
