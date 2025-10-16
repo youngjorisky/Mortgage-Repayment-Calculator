@@ -5,6 +5,16 @@ const rateInput = document.getElementById('rate');
 const radioInputs = document.querySelectorAll('input[name="type"]');
 const requiredMsg = 'This field is required';
 
+// 🧮 Format number with commas
+function formatNumberWithCommas(num) {
+  return num.toLocaleString('en-UK', { maximumFractionDigits: 2 });
+}
+
+// 🧹 Remove commas before parsing
+function removeCommas(value) {
+  return value.replace(/,/g, '');
+}
+
 // Function to show or hide error for one input
 function toggleError(input, show, message = '') {
   let group, errorMsg;
@@ -26,21 +36,36 @@ function toggleError(input, show, message = '') {
   }
 }
 
+// 🧩 Add live comma formatting to amount input
+amountInput.addEventListener('input', (e) => {
+  let value = e.target.value.replace(/,/g, '');
+  if (isNaN(value) || value === '') {
+    e.target.value = '';
+    return;
+  }
+  e.target.value = Number(value).toLocaleString('en-UK');
+});
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   let valid = true;
 
-  if (amountInput.value.trim() === '' || isNaN(amountInput.value) || amountInput.value <= 0) {
+  // Remove commas for numeric validation
+  const cleanAmount = removeCommas(amountInput.value);
+  const cleanYears = removeCommas(yearsInput.value);
+  const cleanRate = removeCommas(rateInput.value);
+
+  if (cleanAmount.trim() === '' || isNaN(cleanAmount) || cleanAmount <= 0) {
     toggleError(amountInput, true, requiredMsg);
     valid = false;
   } else toggleError(amountInput, false);
 
-  if (yearsInput.value.trim() === '' || isNaN(yearsInput.value) || yearsInput.value <= 0) {
+  if (cleanYears.trim() === '' || isNaN(cleanYears) || cleanYears <= 0) {
     toggleError(yearsInput, true, requiredMsg);
     valid = false;
   } else toggleError(yearsInput, false);
 
-  if (rateInput.value.trim() === '' || isNaN(rateInput.value) || rateInput.value <= 0) {
+  if (cleanRate.trim() === '' || isNaN(cleanRate) || cleanRate <= 0) {
     toggleError(rateInput, true, requiredMsg);
     valid = false;
   } else toggleError(rateInput, false);
@@ -54,12 +79,20 @@ form.addEventListener('submit', function (e) {
   if (!valid) return;
 
   calculateRepayments(
-    parseFloat(amountInput.value),
-    parseFloat(rateInput.value),
-    parseFloat(yearsInput.value),
+    parseFloat(cleanAmount),
+    parseFloat(cleanRate),
+    parseFloat(cleanYears),
     checkedType.value
   );
 });
+
+// Format numbers with commas and 2 decimal places
+function formatNumberWithCommas(num) {
+  return num.toLocaleString('en-UK', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
 
 function calculateRepayments(amount, rate, years, type) {
   const monthlyEl = document.getElementById('monthly-repayments');
@@ -79,8 +112,9 @@ function calculateRepayments(amount, rate, years, type) {
     totalRepayment = monthlyPayment * totalPayments;
   }
 
-  monthlyEl.textContent = `£${monthlyPayment.toFixed(2)}`;
-  totalEl.textContent = `£${totalRepayment.toFixed(2)}`;
+  // ✅ Format correctly
+  monthlyEl.textContent = `£${formatNumberWithCommas(monthlyPayment)}`;
+  totalEl.textContent = `£${formatNumberWithCommas(totalRepayment)}`;
 
   const before = document.querySelector('.display-before');
   const after = document.querySelector('.display-after');
