@@ -20,7 +20,7 @@
       <section class="calculator">
         <header class="header">
           <h2>Mortgage Calculator</h2>
-          <button id="reset" type="reset">Clear All</button>
+          <button id="reset" type="button">Clear All</button>
         </header>
 
         <form id="mortgage-form">
@@ -30,7 +30,7 @@
             <span class="symbol">£</span>
             <input id="amount" required />
           </div>
-          <p id="error-message" class="error-message"></p>
+          <p class="error-message"></p>
 
           <!-- Mortgage Term -->
           <div class="term-and-rate">
@@ -40,7 +40,7 @@
                 <input id="years" required />
                 <span class="symbol right">years</span>
               </div>
-              <p id="error-message" class="error-message"></p>
+              <p class="error-message"></p>
             </div>
 
             <!-- Interest Rate -->
@@ -50,7 +50,7 @@
                 <input step="0.01" id="rate" required />
                 <span class="symbol right">%</span>
               </div>
-              <p id="error-message" class="error-message"></p>
+              <p class="error-message"></p>
             </div>
           </div>
 
@@ -69,7 +69,7 @@
               <span class="custom-radio"></span>
               Interest Only
             </label>
-            <p id="error-message" class="error-message"></p>
+            <p class="error-message"></p>
           </div>
 
 
@@ -91,14 +91,14 @@
         <div class="output" id="output">
           <div class="monthly-repayments">
             <p>Your monthly repayments</p>
-            <span id="monthly repayments">£1,791.74</span>
+            <span id="monthly-repayments"></span>
           </div>
           <div class="line">
 
           </div>
           <div class="total-repayments">
             <p>Total you'll repay over the term</p>
-            <span id="total repayments">£1,791.74</span>
+            <span id="total-repayments"></span>
           </div>
         </div>
         </div>
